@@ -64,7 +64,10 @@ ROOT_URLCONF = 'storefront.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        # This gives django another are to look for templates on top of the default
+        'DIRS': [
+            os.path.join(BASE_DIR, 'reactapp/build')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -125,6 +128,10 @@ STATIC_URL = '/static/'
 # so it is very similar to the build folder in react
 # In order to serve static files in production we need to install a library called whitenose
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'reactapp/build/static'),
+]
 
 # This refers to user uploaded files
 MEDIA_URL = '/media/'

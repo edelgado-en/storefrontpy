@@ -17,6 +17,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import TemplateView
 
 # Change the header of the admin dashboard
 admin.site.site_header = 'Storefront Admin'
@@ -31,6 +32,7 @@ urlpatterns = [
     # '' refers to the root of the website
     path('', include('core.urls')),
     path('admin/', admin.site.urls),
+    path('react/', TemplateView.as_view(template_name='index.html')),
     path('playground/', include('playground.urls')),
     path('store/', include('store.urls')),
     path('auth/', include('djoser.urls')),
